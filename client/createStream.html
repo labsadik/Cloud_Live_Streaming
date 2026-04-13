@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="css/style.css">
+
+<div class="container">
+  <h2>🎥 Create Live Stream</h2>
+
+  <div class="card">
+    <input id="title" placeholder="Enter Stream Title" />
+
+    <button onclick="createStream()">🚀 Create Live</button>
+
+    <button onclick="logout()" style="background:#dc2626;">
+      🔒 Logout
+    </button>
+  </div>
+
+  <div id="result" class="card" style="display:none;"></div>
+</div>
+
+<script src="js/app.js"></script>
+
+<script>
+  // 🔥 Check login before allowing access
+  window.onload = () => {
+    const token = localStorage.getItem("token");
+
+    if (!token || token === "null") {
+      alert("Please login first");
+      window.location.href = "login.html";
+    }
+  };
+
+  // 🔐 Logout
+  function logout() {
+    localStorage.removeItem("token");
+    alert("Logged out");
+    window.location.href = "login.html";
+  }
+</script>

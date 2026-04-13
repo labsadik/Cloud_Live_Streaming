@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="css/style.css">
+
+<div class="container">
+  <h2>🔴 Live Stream</h2>
+
+  <video id="player" controls autoplay width="100%" height="450"></video>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id"); // playbackUrl
+
+const video = document.getElementById("player");
+const url = decodeURIComponent(id);
+
+if (Hls.isSupported()) {
+  const hls = new Hls();
+  hls.loadSource(url);
+  hls.attachMedia(video);
+} else {
+  video.src = url;
+}
+</script>
